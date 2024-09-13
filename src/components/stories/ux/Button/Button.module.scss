@@ -1,0 +1,72 @@
+.default {
+	background: transparent !important;
+
+	&:hover {
+		background-color: #ccc !important;
+	}
+}
+.red {
+	color: red;
+	background: red;
+
+	border-color: red !important;
+
+	&:hover {
+		color: white !important;
+		background: rgb(218, 0, 0) !important;
+		border-color: red !important;
+	}
+}
+
+.blue {
+	color: #43a4ff;
+	background: #1f4b75;
+	border-color: #1f4b75 !important;
+
+	&:hover {
+		color: white !important;
+		background: #3582ca !important;
+		border-color: #3582ca !important;
+	}
+}
+
+.green {
+	color: #27c334;
+	background: #27c334;
+	border-color: #27c334 !important;
+	&:hover {
+		color: white !important;
+		background: #1f9629 !important;
+		border-color: #1f9629;
+	}
+}
+
+.primary {
+	color: #fff !important;
+
+	box-shadow: none !important;
+}
+.dashed {
+	background: transparent !important;
+}
+
+.link {
+	border-color: transparent !important;
+	background-color: transparent !important;
+
+	&:hover {
+		color: inherit !important;
+		background: transparent !important;
+		border-color: transparent !important;
+	}
+}
+.text {
+	border-color: transparent !important;
+	background-color: transparent !important;
+
+	&:hover {
+		color: inherit !important;
+		background: transparent !important;
+		border-color: transparent !important;
+	}
+}

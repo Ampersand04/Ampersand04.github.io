@@ -1,0 +1,75 @@
+.layout {
+	min-height: 100vh;
+	background: #000;
+}
+
+.content {
+	background: linear-gradient(180deg, rgba(#e5e5be, 0.3) 1.94%, #031226 100%),
+		url('/ellipse.png');
+}
+.table {
+	margin: 50px 30px;
+	border-radius: 8px;
+	padding: 30px 50px;
+	background: #ffffff;
+
+	.header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		gap: 10px;
+
+		.top {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+
+			gap: 10px;
+		}
+	}
+	.error {
+		h4 {
+			color: red;
+
+			a {
+				text-decoration: underline;
+			}
+		}
+	}
+	td,
+	th {
+		padding: 10px !important;
+	}
+	span {
+		text-wrap: nowrap;
+	}
+}
+
+.coinTable {
+	max-width: fit-content;
+}
+
+@media only screen and (max-width: 900px) {
+	.header {
+		justify-content: space-between;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.table {
+		margin: 30px 20px;
+		border-radius: 4px;
+		padding: 20px 30px;
+		background: #ffffff;
+	}
+
+	h2,
+	h4 {
+		font-size: 14px;
+	}
+
+	p {
+		font-size: 12px;
+	}
+}
