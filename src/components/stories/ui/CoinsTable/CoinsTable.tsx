@@ -1,6 +1,6 @@
 import { ICoinTable } from './CoinsTable.types'
 import styles from './CoinsTable.module.scss'
-import { Spin, Table, Typography } from 'antd'
+import { Pagination, Spin, Table, Typography } from 'antd'
 import { useEffect, useState } from 'react'
 import { Coin, PortfolioCoin } from '@/types/Coin.types'
 import { columns } from './Content.data'
@@ -12,13 +12,15 @@ import { LoadingOutlined } from '@ant-design/icons'
 import { getIconUrl } from '@/utils/getIconsUrl'
 
 export const CoinsTable: React.FC<ICoinTable> = () => {
-	const { isLoading, error, data } = useAssets()
-
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 	const [selectedCoin, setSelectedCoin] = useState<PortfolioCoin | undefined>(
 		undefined
 	)
 	const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 790)
+	const [currentPage, setCurrentPage] = useState<number>(1)
+	const [pageSize] = useState<number>(10)
+
+	const { isLoading, error, data } = useAssets(currentPage, pageSize)
 
 	const showModal = () => {
 		setIsModalOpen(true)
@@ -31,6 +33,9 @@ export const CoinsTable: React.FC<ICoinTable> = () => {
 	const navigate = useNavigate()
 
 	const [searchText, setSearchText] = useState<string>('')
+	const handlePageChange = (page: number) => {
+		setCurrentPage(page)
+	}
 
 	const handleRowClick = (record: Coin) => {
 		navigate(`/coin/${record.id}`)
@@ -66,8 +71,14 @@ export const CoinsTable: React.FC<ICoinTable> = () => {
 					searchText={searchText}
 				/>
 			</div>
-
 			<div className={styles.tableContainer}>
+				<Pagination
+					current={currentPage}
+					pageSize={pageSize}
+					total={100}
+					onChange={handlePageChange}
+					className={styles.pagination}
+				/>
 				{isLoading ? (
 					<div className={styles.loader}>
 						<Spin indicator={<LoadingOutlined spin />} />
@@ -87,7 +98,7 @@ export const CoinsTable: React.FC<ICoinTable> = () => {
 							getIconUrl
 						})}
 						rowKey="id"
-						pagination={{ pageSize: 10 }}
+						pagination={false}
 						onRow={(record) => ({
 							onClick: () => handleRowClick(record)
 						})}
@@ -95,7 +106,6 @@ export const CoinsTable: React.FC<ICoinTable> = () => {
 					/>
 				)}
 			</div>
-
 			{selectedCoin && (
 				<CoinAddModal
 					coin={selectedCoin}

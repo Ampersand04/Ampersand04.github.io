@@ -9,7 +9,7 @@ import { formatNumber } from '@/utils/formatNumber'
 
 export const Header: React.FC<IHeader> = () => {
 	const { isModalOpen, openModal, handleOk, handleCancel } = useModal()
-	const { isLoading, error, data } = useAssets()
+	const { isLoading, error, data } = useAssets(1, 3)
 
 	if (isLoading)
 		return (

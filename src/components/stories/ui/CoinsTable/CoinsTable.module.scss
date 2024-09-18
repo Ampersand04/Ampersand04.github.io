@@ -33,6 +33,7 @@
 
 	.loader {
 		display: flex;
+		min-height: 500px;
 		padding: 10px;
 		gap: 10px;
 
@@ -48,6 +49,10 @@
 
 		color: red;
 		padding: 10px;
+	}
+
+	.pagination {
+		padding: 20px 10px 30px !important;
 	}
 }
 

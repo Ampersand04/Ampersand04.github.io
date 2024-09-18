@@ -18,9 +18,9 @@ import { getIconUrl } from '@/utils/getIconsUrl'
 import { PortfolioProvider } from '@/providers/PortfolioContext'
 
 const fetchCoin = async (id: string): Promise<Coin> => {
-	const { data } = await axios.get<{ data: Coin }>(
-		`https://api.coincap.io/v2/assets/${id}`
-	)
+	const api_url = 'https://api.coincap.io/v2/assets'
+
+	const { data } = await axios.get<{ data: Coin }>(`${api_url}/assets/${id}`)
 	return data.data
 }
 const convertToPortfolioCoin = (coin: Coin): PortfolioCoin => {
@@ -29,7 +29,7 @@ const convertToPortfolioCoin = (coin: Coin): PortfolioCoin => {
 		name: coin.name || '',
 		symbol: coin.symbol || '',
 		priceUsd: parseFloat(coin.priceUsd || '0'),
-		amount: 1,
+		amount: 0.001,
 		priceUsdAtPurchase: parseFloat(coin.priceUsd || '0')
 	}
 }

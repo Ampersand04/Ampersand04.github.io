@@ -30,7 +30,7 @@ const PortfolioProvider = ({ children }: { children: ReactNode }) => {
 	const [difference, setDifference] = useState(0)
 	const [differencePercent, setDifferencePercent] = useState(0)
 
-	const { data: assetsData } = useAssets()
+	const { data: assetsData } = useAssets(1, 100)
 
 	useEffect(() => {
 		const savedPortfolio: PortfolioCoin[] = JSON.parse(

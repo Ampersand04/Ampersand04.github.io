@@ -34,11 +34,10 @@ export const useCoinHistory = () => {
 	const [interval, setInterval] = useState<string>('h2')
 
 	const fetchCoinHistory = async (id: string, interval: string) => {
+		const api_url = 'https://api.coincap.io/v2/assets'
 		const { data } = await axios.get<{
 			data: Array<{ priceUsd: string; time: number }>
-		}>(
-			`https://api.coincap.io/v2/assets/${id}/history?interval=${interval}`
-		)
+		}>(`${api_url}/assets/${id}/history?interval=${interval}`)
 		return data.data
 	}
 

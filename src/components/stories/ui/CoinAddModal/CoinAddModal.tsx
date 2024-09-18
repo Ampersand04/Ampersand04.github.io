@@ -49,7 +49,7 @@ const CoinAddModal: React.FC<CoinAddModalProps> = ({
 						USD
 					</p>
 					<InputNumber
-						min={1}
+						min={0.001}
 						value={amount}
 						onChange={(value) => {
 							if (value !== null) {
